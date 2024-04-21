@@ -11,10 +11,7 @@ public class Barany extends Allat {
         hely.random();
         cubeColor = new Color(255, 255, 255);
     }
-    int jatekosHely;
-    public void setJatekosHely(int ide){
-        this.jatekosHely = ide;
-    }
+
 
     @Override
     void meghal() {
@@ -22,7 +19,7 @@ public class Barany extends Allat {
     }
 
 
-    public void menekul() {
+    public String menekul() {
         // Szomszédos bárányok keresése
         ArrayList<Barany> szomszedok = new ArrayList<Barany>();
         float szomszed_tavolsag = 5; // Szomszédsági távolság
@@ -82,6 +79,8 @@ public class Barany extends Allat {
         // Új pozíció számítása és korlátozása
         int ujX =  (int)(hely.x + menekulesIrany.x);
         int ujY =  (int)(hely.y + menekulesIrany.y);
+        Vectorr visszakuldeni = new Vectorr(ujX,ujY);
+
 
         // RANDOOM MOZGAS -----------------------------
         //Random random = new Random();
@@ -90,13 +89,12 @@ public class Barany extends Allat {
         // --------------------------------------------
 
         // Bárány pozíció frissítése
-        //frame.setSize(palyameret_x+14, palyameret_y+37);
-        if (ujX > 0  && ujX < Palya.palyameret_x-5 ) this.hely.x = ujX;
+
 
 
         // A BARANY NEM TUDJA, HOGY HANYADIK PLAYERE
         // DE A PALYA SZELEIT TUDNI FOGJA. ÉS KÜLÖNBÖZŐ PLAYERHEZ, MAS PALYA
-       // if (ujX >=  Palya.palyameret_x-5 &&  )
+        // if (ujX >=  Palya.palyameret_x-5 &&  )
         //if( ujX > 0                      && player = 1 )
         //if( ujX > 0                      && player = 2 )
         //if (ujX >=  Palya.palyameret_x-5 && player = 2 )
@@ -105,10 +103,25 @@ public class Barany extends Allat {
 
         if( ujY > 0  && ujY < Palya.palyameret_y-5 ) this.hely.y = ujY;
         if (ujY > Palya.palyameret_x-5 )             this.hely.y = Palya.palyameret_y-5;
+        if (ujY < 0 )                                this.hely.y = 0;
 
 
+        //frame.setSize(palyameret_x+14, palyameret_y+37);
+        if (ujX > 0  && ujX < Palya.palyameret_x-5 ) {
+            this.hely.x = ujX;
+        }
+        if (ujX > Palya.palyameret_x-5 && Palya_rajzol.getAtmehetJobbra(jatekosHely)  ) {
+            System.out.println(jatekosHely);
+            this.hely.x = 0;
+            return "jobbra";
+        }
+        if (ujX < 0  && Palya_rajzol.getAtmehetBalra(jatekosHely) ) {
+            this.hely.x = Palya.palyameret_x-5;
+            return "balra";
+        }
 
 
+        return "marad";
 
     }
 

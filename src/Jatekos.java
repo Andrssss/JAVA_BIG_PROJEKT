@@ -42,16 +42,19 @@ public class Jatekos implements Runnable {
             e.printStackTrace();
         }
 
-        for(int i=0;i<50;i++){
-            Barany tmp_bari = new Barany();
-            tmp_bari.setJatekosHely(Hanyadik_jatekos);
-            baranyok.add(tmp_bari);
+        if(szam==2 ||szam==1){
+            for(int i=0;i<20;i++){
+                Barany tmp_bari = new Barany();
+                tmp_bari.setJatekosHely(Hanyadik_jatekos);
+                baranyok.add(tmp_bari);
+            }
+            for(int i=0;i<1;i++){
+                Farkas tmp_farkas = new Farkas();
+                tmp_farkas.setJatekosHely(Hanyadik_jatekos);
+                farkasok.add(tmp_farkas);
+            }
         }
-        for(int i=0;i<5;i++){
-            Farkas tmp_farkas = new Farkas();
-            tmp_farkas.setJatekosHely(Hanyadik_jatekos);
-            farkasok.add(tmp_farkas);
-        }
+
     }
 
 

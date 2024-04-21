@@ -12,13 +12,12 @@ public class Main extends JPanel {
 
 
 
-        try {
+        /*try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        }
+        }*/
 
         new Thread( new Jatekos(2)).start();
-
     }
 }

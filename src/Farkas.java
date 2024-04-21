@@ -12,10 +12,6 @@ public class Farkas extends Allat {
         cubeColor = new Color(255, 0, 0);
     }
 
-    int jatekosHely;
-    public void setJatekosHely(int ide){
-        this.jatekosHely = ide;
-    }
 
     /// EZ VAN LEGKOZELEBB AZ EREDETIHEZ, DE SOKAT KELL CSISZOLNI, FARKASOK PALYAN KIVUL ...............................
     public void uldozBaranyok() {

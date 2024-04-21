@@ -7,6 +7,13 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 
+
+
+// ITT LESZNEK A KÖZÖS DOLGOK A PALYA RAJZOLBAN, MEG A KÜLÖN
+
+
+
+
 public class Palya extends JPanel implements Runnable {
     protected Socket clientSocket;
     protected BufferedReader clientReader;
@@ -17,33 +24,29 @@ public class Palya extends JPanel implements Runnable {
 
     protected static final int palyameret_x = 500;
     protected static final int palyameret_y = 500;
-    public ArrayList<Barany> baranyok = new ArrayList<Barany>();
-    public ArrayList<Farkas> farkasok = new ArrayList<Farkas>();
 
-    protected static int hanyadok_jatekos ;
 
-    protected boolean atlehet_menni_jobbra;
-    protected boolean atlehet_menni_balra;
+    protected int hanyadok_jatekos;
+
+
 
     Palya() {
     }
 
     Palya(Socket clientSocket, int jatekosSzam) throws IOException {
-        if (jatekosSzam == 0) {
-            atlehet_menni_jobbra = true;
-            atlehet_menni_balra = false;
-        } else if (jatekosSzam == 1) {
-            atlehet_menni_jobbra = false;
-            atlehet_menni_balra = true;
-        }
-        this.hanyadok_jatekos = jatekosSzam;
-        this.baranyok = Jatekos.getBaranyok();
-        this.farkasok = Jatekos.getFarkasok();
+
+        this.hanyadok_jatekos=jatekosSzam;
+
 
         this.clientSocket = clientSocket;
         this.clientReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         this.clientWriter = new PrintWriter(clientSocket.getOutputStream());
     }
+
+
+    // todo
+
+
 
 
 

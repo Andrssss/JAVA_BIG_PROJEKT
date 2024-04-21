@@ -16,7 +16,7 @@ public class Palya_server implements Runnable{
      * KONSTUKTOR
      */
     public Palya_server()  {
-        hanyadik_palya= 0;
+        hanyadik_palya= 1;
         try {
             serverSocket = new ServerSocket(PORT_NUMBER);
         }catch (IOException e){
@@ -52,13 +52,13 @@ public class Palya_server implements Runnable{
                     Socket clientSocket = serverSocket.accept(); // itt elfogadja a kérést és nyit egy socketet
                     System.out.println("SZERVER      - UJ SOCKET NYITAS A : " + clientSocket.getPort()+" -AL" );
                     try {
-                        if(hanyadik_palya == 0 ){
+                        if(hanyadik_palya == 1 ){
                             Palya palyaInstance1 = new Palya(clientSocket,1);
                             Thread palyaThread1 = new Thread(palyaInstance1);
                             palyaThread1.start();
                             hanyadik_palya++;
                         }
-                        else if(hanyadik_palya == 1 ){
+                        else if(hanyadik_palya == 2 ){
                             Palya palyaInstance2 = new Palya(clientSocket,2);
                             Thread palyaThread2 = new Thread(palyaInstance2);
                             palyaThread2.start();
